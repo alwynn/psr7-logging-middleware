@@ -1,0 +1,4 @@
+composer.lock
+coverage/
+metrics/
+vendor/

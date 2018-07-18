@@ -1,0 +1,41 @@
+{
+    "name": "alwynn/psr7-logging-middleware",
+    "description": "Logging middleware",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Alwynn",
+            "email": "alwynn.github@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Psr7\\Middleware\\Logging\\": "src"
+        }
+    },
+    "require": {
+        "monolog/monolog": "^1.23"
+    },
+    "require-dev": {
+        "psr/http-server-middleware": "^1.0",
+        "squizlabs/php_codesniffer": "^3.2",
+        "psr/container": "^1.0",
+        "psr/log": "^1.0",
+        "phpunit/phpunit": "^7.2",
+        "zendframework/zend-stratigility": "^3.0",
+        "phpstan/phpstan": "^0.10.1",
+        "phpmetrics/phpmetrics": "^2.4"
+    },
+    "extra": {
+        "zf": {
+            "config-provider": "Psr7\\Middleware\\Logging\\ZendConfigProvider"
+        }
+    },
+    "scripts": {
+        "check": ["@sniff", "@analyse", "@metrics", "@test"],
+        "sniff": "./vendor/bin/phpcs --standard=PSR2 -v src",
+        "analyse": "./vendor/bin/phpstan --level=max analyse src",
+        "metrics": " ./vendor/bin/phpmetrics --report-html=metrics src",
+        "test": "./vendor/bin/phpunit --bootstrap test/bootstrap.php --coverage-html coverage --whitelist src test"
+    }
+}
